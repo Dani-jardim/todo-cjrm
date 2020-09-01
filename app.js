@@ -1,4 +1,5 @@
 const formAddTodo = document.querySelector('.form-add-todo')
+const inputSearchTodo = document.querySelector('.form-search input')
 
 const todosContainer = document.querySelector('.todos-container')
 
@@ -24,3 +25,13 @@ todosContainer.addEventListener('click', event => {
    clickedElement.parentElement.remove()
   }
 })
+
+inputSearchTodo.addEventListener('input', event => {
+  const inputValue =event.target.value.trim()
+  Array.from(todosContainer.children)
+    .filter( todo => !todo.textContent.includes(inputValue))
+    .forEach(todo => {
+      todo.classList.add('hidden')
+    })
+})
+  
